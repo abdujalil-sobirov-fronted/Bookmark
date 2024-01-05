@@ -1,4 +1,3 @@
-
 let booksArr = [
   {
     id: 1,
@@ -302,7 +301,6 @@ let typeSelect = document.getElementById("type");
 let pageSelect = document.getElementById("page");
 let prevPage = document.getElementById("prevPage");
 let nextPage = document.getElementById("nextPage");
-
 let currentPage = 1;
 let pageSize = parseInt(pageSelect.value);
 
@@ -361,21 +359,25 @@ pageSelect.addEventListener("change", function () {
   updatePage();
 });
 
-prevPage.addEventListener("click", function (e) {
-  e.preventDefault();
+prevPage.addEventListener("click", function () {
   if (currentPage > 1) {
     currentPage--;
     updatePage();
   }
 });
 
-nextPage.addEventListener("click", function (e) {
-  e.preventDefault();
+nextPage.addEventListener("click", function () {
   let totalPages = Math.ceil(booksArr.length / pageSize);
   if (currentPage < totalPages) {
     currentPage++;
     updatePage();
   }
 });
+
+function changePageSize() {
+  pageSize = parseInt(pageSelect.value);
+  currentPage = 1;
+  updatePage();
+}
 
 updatePage();
